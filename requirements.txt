@@ -1,2 +1,5 @@
 flask
-
+Flask-PyMongo 
+Flask-RESTful 
+Flask-Bcrypt
+marshmallow
