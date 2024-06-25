@@ -1,12 +1,9 @@
 from flask_restful import Resource, reqparse
-from flask import request, jsonify
-from flask_pymongo import PyMongo
 from models import UserModel
-from schemas import UserSchema
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
-mongo=PyMongo()
+
 
 class UserResource(Resource):
     def get(self, username):
@@ -24,8 +21,3 @@ class UserResource(Resource):
         user.save_to_db()
         return {"message": "User created successfully"}, 201
 
-class UserListResource(Resource):
-    def get(self):
-        db = mongo.db
-        users = db.users.find()
-        return [{"username": user["username"]} for user in users]
